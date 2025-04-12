@@ -3,7 +3,18 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-Transformers-yellow)](https://huggingface.co/transformers/)
-[![Project Repository](https://img.shields.io/badge/GitHub-NLP_Project-blue)](https://github.com/uddeepyalamanchili/NLP_Project)
+[![Project Repository](https://img.shields.io/badge/GitHub-Project-blue)](https://github.com/aditya-sudo/Grammar-Feedback-System-for-Non-Native-Hindi-Learners)
+
+## 📚 Table of Contents
+
+- [📌 Overview](#-overview)
+- [🎯 Objectives](#-objectives)
+- [🧠 Key Features](#-key-features)
+- [📊 Results](#-results)
+- [📚 Learning Outcomes](#-learning-outcomes)
+- [👨‍💻 Authors](#-authors)
+
+---
 
 ## 📌 Overview
 
@@ -70,3 +81,56 @@ Key models such as **T5**, **MarianMT**, **DistilBERT**, and **BERT** were used 
 - Aditya Shah – [GitHub](https://github.com/aditya-sudo)
 - Nikhil Chukka
 - Uddip Yalamanchili
+
+---
+
+## 🗂️ Code Structure
+
+The repository includes:
+
+```
+📦Grammar-Feedback-System-for-Non-Native-Hindi-Learners/
+├── 📁 data/                      # Scripts and datasets for synthetic and real error generation
+│   ├── hiwikied_extraction.py   # Extracts corrections from Hindi Wikipedia edits
+│   ├── generate_synthetic.py    # Adds inflectional, agreement, word order errors
+│   └── back_translation.py      # Ordered back-translation using Helsinki-NLP
+│
+├── 📁 models/                   # Model training scripts
+│   ├── train_distilbert.py      # Sentence-level classification with DistilBERT
+│   ├── train_t5.py              # Sentence correction using T5
+│   ├── train_marianmt.py        # Sentence correction using MarianMT
+│   └── evaluate.py              # Evaluation script (BLEU, GLEU, precision, recall)
+│
+├── 📁 utils/                    # Utilities
+│   ├── tokenizer_utils.py
+│   ├── data_loader.py
+│   └── helpers.py
+│
+├── 📄 report.pdf                # Final report with methodology and results
+├── 📄 README.md                 # Project overview
+└── 📄 requirements.txt          # Python dependencies
+```
+
+To reproduce results:
+
+```bash
+# Create and activate virtual environment
+python3 -m venv env
+source env/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run data preprocessing
+python data/hiwikied_extraction.py
+
+# Train models
+python models/train_t5.py
+python models/train_marianmt.py
+
+# Evaluate results
+python models/evaluate.py
+```
+
+> For detailed configuration, refer to model-specific scripts under `/models`.
+
