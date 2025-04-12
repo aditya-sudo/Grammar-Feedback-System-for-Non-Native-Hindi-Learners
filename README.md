@@ -1,8 +1,13 @@
 # 📝 Grammar Feedback System for Non-Native Hindi Learners
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-Transformers-yellow)](https://huggingface.co/transformers/)
+[![Project Repository](https://img.shields.io/badge/GitHub-NLP_Project-blue)](https://github.com/uddeepyalamanchili/NLP_Project)
+
 ## 📌 Overview
 
-This project explores sentence-level grammatical error correction (GEC) in **Hindi**, a low-resource and morphologically rich language. The system targets personalized feedback for Hindi learners by leveraging advanced NLP models trained on both synthetic and real-world datasets.  
+This project explores sentence-level grammatical error correction (GEC) in **Hindi**, a low-resource and morphologically rich language. The system targets personalized feedback for Hindi learners by leveraging advanced NLP models trained on both synthetic and real-world datasets.
 
 Key models such as **T5**, **MarianMT**, **DistilBERT**, and **BERT** were used for detection, classification, and correction tasks. Performance was evaluated using BLEU/GLEU scores and human assessments.
 
@@ -15,16 +20,31 @@ Key models such as **T5**, **MarianMT**, **DistilBERT**, and **BERT** were used 
 
 ## 🧠 Key Features
 
-- **Data Creation**: 5 custom datasets including synthetic inflectional errors, number agreement, word order shuffling, and real Hindi Wikipedia edits (HiWikEd).
+- **Data Creation**: 5 custom datasets including:
+  - Synthetic errors (inflectional, word order, number agreement, case markers)
+  - Real Hindi Wikipedia edit-based corpus (HiWikEd)
+  - Back-translated Hindi sentences using Helsinki-NLP models
+
+- **Dataset Process**:
+  - Used Hindi Wikipedia dump (June 2024) and WikiExtractor to extract clean sentences.
+  - Generated synthetic errors using rule-based POS tagging (via Stanza) and random perturbations.
+  - Extracted real edits using a modified WikiEdits script to build the HiWikEd corpus.
+  - Augmented data using ordered back-translation with HuggingFace translation pipelines.
+
+- **🔗 Dataset Access**:  
+  [📂 Click here to access the dataset on SharePoint](https://gmuedu-my.sharepoint.com/:f:/g/personal/uyalaman_gmu_edu/El9MKJSpVBtGutpSgO0OHxAB6IN_FFDzzj_mI7uipYpyLQ?e=dHs31D)
+
 - **Model Pipeline**:
   - `DistilBERT`: Sentence correctness classification
   - `BERT`: Token-level error labeling (limited success)
   - `MarianMT` and `T5`: Sentence-level correction (fine-tuned for Hindi)
+
 - **Training Infrastructure**: Fine-tuned on A100 80GB GPU with gradient accumulation and mixed-precision training.
+
 - **Evaluation**:
   - Fine-tuned MarianMT achieved **+9.6% BLEU** and **+13.9% GLEU** over the baseline.
-  - Example Correction:  
-    - ❌ *"उसकी प्रतिभा की गहराई किसी अनजाने समुद्र जैसा है"*  
+  - Example Correction:
+    - ❌ *"उसकी प्रतिभा की गहराई किसी अनजाने समुद्र जैसा है"*
     - ✅ *"उसकी प्रतिभा की गहराई किसी अनजाने समुद्र जैसी है"*
 
 ## 📊 Results
@@ -47,6 +67,6 @@ Key models such as **T5**, **MarianMT**, **DistilBERT**, and **BERT** were used 
 
 ## 👨‍💻 Authors
 
-- Aditya Shah – [GitHub](https://github.com/aditya-sudo)  
-- Nikhil Chukka  
+- Aditya Shah – [GitHub](https://github.com/aditya-sudo)
+- Nikhil Chukka
 - Uddip Yalamanchili
