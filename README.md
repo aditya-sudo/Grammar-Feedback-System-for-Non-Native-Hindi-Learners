@@ -12,6 +12,8 @@
 - [🧠 Key Features](#-key-features)
 - [📊 Results](#-results)
 - [📚 Learning Outcomes](#-learning-outcomes)
+- [🗂️ Code Structure](#️-code-structure)
+- [🚀 Usage](#-usage)
 - [👨‍💻 Authors](#-authors)
 
 ---
@@ -76,42 +78,22 @@ Key models such as **T5**, **MarianMT**, **DistilBERT**, and **BERT** were used 
 - Discovered the limitations of token-level GEC for Hindi and transitioned to sentence-level correction.
 - Conducted in-depth error analysis to evaluate model performance on idioms, compound sentences, and inflections.
 
-## 👨‍💻 Authors
-
-- Aditya Shah – [GitHub](https://github.com/aditya-sudo)
-- Nikhil Chukka
-- Uddip Yalamanchili
-
----
-
 ## 🗂️ Code Structure
 
 The repository includes:
 
 ```
-📦Grammar-Feedback-System-for-Non-Native-Hindi-Learners/
-├── 📁 data/                      # Scripts and datasets for synthetic and real error generation
-│   ├── hiwikied_extraction.py   # Extracts corrections from Hindi Wikipedia edits
-│   ├── generate_synthetic.py    # Adds inflectional, agreement, word order errors
-│   └── back_translation.py      # Ordered back-translation using Helsinki-NLP
-│
-├── 📁 models/                   # Model training scripts
-│   ├── train_distilbert.py      # Sentence-level classification with DistilBERT
-│   ├── train_t5.py              # Sentence correction using T5
-│   ├── train_marianmt.py        # Sentence correction using MarianMT
-│   └── evaluate.py              # Evaluation script (BLEU, GLEU, precision, recall)
-│
-├── 📁 utils/                    # Utilities
-│   ├── tokenizer_utils.py
-│   ├── data_loader.py
-│   └── helpers.py
-│
-├── 📄 report.pdf                # Final report with methodology and results
-├── 📄 README.md                 # Project overview
-└── 📄 requirements.txt          # Python dependencies
+📦 Grammar-Feedback-System-for-Non-Native-Hindi-Learners/
+├── 📁 Hindi_WikiEdits_DataGenerator/  # Scripts and resources for data generation
+├── 📁 src/                            # Jupyter notebooks and Python scripts for modeling
+├── 📄 FinalProjectReport.pdf          # Detailed methodology and results
+├── 📄 README.md                       # Project overview
+└── 📄 requirements.txt                # Dependencies
 ```
 
-To reproduce results:
+## 🚀 Usage
+
+To reproduce results or run the models:
 
 ```bash
 # Create and activate virtual environment
@@ -121,16 +103,21 @@ source env/bin/activate
 # Install dependencies
 pip install -r requirements.txt
 
-# Run data preprocessing
-python data/hiwikied_extraction.py
+# Run data preprocessing scripts
+cd Hindi_WikiEdits_DataGenerator/
+bash mlconvgec_execution.sh
 
-# Train models
-python models/train_t5.py
-python models/train_marianmt.py
-
-# Evaluate results
-python models/evaluate.py
+# Launch Jupyter notebooks for analysis and training
+cd ../src
+jupyter notebook
 ```
 
-> For detailed configuration, refer to model-specific scripts under `/models`.
+> For detailed configuration and specific steps, refer to individual notebooks and scripts under `/src` and `/Hindi_WikiEdits_DataGenerator`.
 
+## 👨‍💻 Authors
+
+- Aditya Shah – [GitHub](https://github.com/aditya-sudo)
+- Nikhil Chukka
+- Uddip Yalamanchili
+
+📂 [Project Repository](https://github.com/aditya-sudo/Grammar-Feedback-System-for-Non-Native-Hindi-Learners)
